@@ -1,0 +1,19 @@
+body {
+  background: dimgray;
+}
+
+h1 {
+  color: darkorange;
+  font-weight: 500;
+  font-style: oblique;
+}
+
+h2 {
+  color: darksalmon;
+  font-weight: 300;
+  font-style: italic;
+}
+.image {
+  height: 200px;
+  width: 200px;
+}
