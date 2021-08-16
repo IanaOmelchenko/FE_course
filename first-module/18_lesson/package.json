@@ -1,0 +1,26 @@
+{
+  "name": "18_webpack_rollup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index18.js",
+  "scripts": {
+    "dev": "rollup -c -w",
+    "prod": "rollup -c"
+  },
+  "keywords": [
+    "webpack",
+    "rollup"
+  ],
+  "author": "Yana Yana",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.14.8",
+    "rollup": "^2.55.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-styles": "^3.14.1"
+  }
+}
