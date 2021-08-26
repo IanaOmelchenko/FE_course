@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import API from '../API';
 
-
 const Users = () => {
     const [users, setUsers] = useState(API.users.fetchAll());
     const handleDelete = (userId) => {
@@ -10,10 +9,9 @@ const Users = () => {
             return item._id !== userId;
         })
         )};
+
     const renderPhrase = number => {
-        const table = document.querySelector('.table');
         if(number === 0){
-            table.innerHTML = '';
             return `Никто не тусанет с тобой сегодня`;
         }
         else if(number ===1){
@@ -26,18 +24,26 @@ const Users = () => {
             return `${number} человек тусанут с тобой сегодня`;
         }
     };
-    const checkTable = () => {
+
+    const checkHeader = () => {
         if(users.length>0){
-            return newUsers;
+            return (
+                <tr>
+                <th scope="col">Имя</th>
+                <th scope="col">Качества</th>
+                <th scope="col">Профессия</th>
+                <th scope="col">Встретился, раз</th>
+                <th scope="col">Оценка</th>
+                <th scope="col">Delete</th>
+              </tr>
+            )};
         }
 
-    }
     const colorPhrase = () =>{
         let classes = 'badge bg-';
         classes += users.length === 0?'danger':'primary';
         return classes;
     }
-
    
     let newUsers = users && users.map((user, index) => { return (
             <tr key = {user._id}>
@@ -54,17 +60,10 @@ const Users = () => {
     <span className = {colorPhrase()}>{renderPhrase(users.length)}</span>
         <table className="table">
   <thead>
-    <tr>
-      <th scope="col">Имя</th>
-      <th scope="col">Качества</th>
-      <th scope="col">Профессия</th>
-      <th scope="col">Встретился, раз</th>
-      <th scope="col">Оценка</th>
-      <th scope="col">Delete</th>
-    </tr>
+      {checkHeader()}
   </thead>
   <tbody>
-     {checkTable()}
+     {newUsers}
   </tbody>
 </table>
     </>);
