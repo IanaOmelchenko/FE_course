@@ -26,6 +26,12 @@ const Users = () => {
             return `${number} человек тусанут с тобой сегодня`;
         }
     };
+    const checkTable = () => {
+        if(users.length>0){
+            return newUsers;
+        }
+
+    }
     const colorPhrase = () =>{
         let classes = 'badge bg-';
         classes += users.length === 0?'danger':'primary';
@@ -58,7 +64,7 @@ const Users = () => {
     </tr>
   </thead>
   <tbody>
-     {newUsers}
+     {checkTable()}
   </tbody>
 </table>
     </>);
