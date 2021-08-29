@@ -1,30 +1,7 @@
-import React, { useState } from 'react';
-import API from '../API';
+import React from 'react';
+import User from './user';
 
-const Users = () => {
-    const [users, setUsers] = useState(API.users.fetchAll());
-    const handleDelete = (userId) => {
-        setUsers(users.filter((item)=>{
-            console.log('users.length', users.length);
-            return item._id !== userId;
-        })
-        )};
-
-    const renderPhrase = number => {
-        if(number === 0){
-            return `Никто не тусанет с тобой сегодня`;
-        }
-        else if(number ===1){
-            return `${number} человек тусанет с тобой сегодня`;
-        }
-        else if(number>1&&number<5){
-            return `${number} человека тусанет с тобой сегодня`;
-        }
-        else{
-            return `${number} человек тусанут с тобой сегодня`;
-        }
-    };
-
+const Users = ({users, onDelete, takeClick}) => {   
     const checkHeader = () => {
         if(users.length>0){
             return (
@@ -34,39 +11,33 @@ const Users = () => {
                 <th scope="col">Профессия</th>
                 <th scope="col">Встретился, раз</th>
                 <th scope="col">Оценка</th>
+                <th scope="col">Избранное</th>
                 <th scope="col">Delete</th>
               </tr>
             )};
-        }
+        } 
 
-    const colorPhrase = () =>{
-        let classes = 'badge bg-';
-        classes += users.length === 0?'danger':'primary';
-        return classes;
-    }
-   
-    let newUsers = users && users.map((user, index) => { return (
-            <tr key = {user._id}>
-             <td>{user.name}</td>
-             <td>{user.qualities.map((quality) => {return <span className = {`badge m-1 bg-${quality.color}`} key={quality._id}>{quality.name}</span>})}</td>
-            <td>{user.profession.name}</td>
-             <td>{user.completedMeetings}</td>
-            <td>{user.rate}</td>
-            <td>{<button className = 'badge bg-danger' onClick={()=>handleDelete(user._id)}>Delete</button>}</td>
-            </tr>)
+    let newUsers = users && users.map((user) => { 
+        return (
+        <User user={user}
+            key = {user._id}
+              onDelete = {onDelete}
+              takeClick = {takeClick}/>
+            )
     });
 
-    return (<>
-    <span className = {colorPhrase()}>{renderPhrase(users.length)}</span>
+    return (
+    <>
         <table className="table">
-  <thead>
-      {checkHeader()}
-  </thead>
-  <tbody>
-     {newUsers}
-  </tbody>
-</table>
-    </>);
+            <thead>
+                {checkHeader()}
+            </thead>
+            <tbody>
+                {newUsers}
+            </tbody>
+        </table>
+    </>
+    );
 }
 
 export default Users;
