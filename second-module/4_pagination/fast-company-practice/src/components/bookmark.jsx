@@ -12,7 +12,7 @@ const BookMark = ({ status, onToggle }) => {
 };
 
 BookMark.propTypes = {
-    status: PropTypes.string.isRequired,
+    status: PropTypes.bool,
     onToggle: PropTypes.func.isRequired
 };
 
