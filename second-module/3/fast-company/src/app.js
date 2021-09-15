@@ -12,7 +12,6 @@ const App = () => {
     )};
 
     const takeClick = (userId) => {
-        console.log('click');
         setUsers(users.filter((item)=>{
             if(item._id === userId){
                 item.status = !item.status;
