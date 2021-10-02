@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import User from './user';
 import API from '../API';
 import SearchStatus from './searchStatus';
 import Pagination from './pagination';
@@ -65,15 +64,7 @@ const Users = () => {
             })
         );
     };
-    // const usersToTable = users && users.map((user) => (
-    //     <User
-    //         user={user}
-    //         key={user._id}
-    //         onDelete={onDelete}
-    //         onToggle={onToggle}
-    //     />
-    // ));
-    // return <>{usersToTable}</>;
+
     return (
         <div className='d-flex'>
             {professions &&

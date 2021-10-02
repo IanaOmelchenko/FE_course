@@ -28,7 +28,6 @@ const TableHeader = ({ onSort, userCount, currentSort, columns }) => {
             if (currentSort.order === 'asc') {
                 arrowClass += 'down-fill';
             } else {
-                console.log('currentSort.order', currentSort.order);
                 arrowClass += 'up-fill';
             }
         }

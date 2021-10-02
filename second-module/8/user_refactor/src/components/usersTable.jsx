@@ -5,10 +5,17 @@ import TableBody from './tableBody';
 import BookMark from './bookmark';
 import QualitiesList from './qualitiesList';
 import Table from './table';
+import { Link } from 'react-router-dom';
 
 const UsersTable = ({ users, onDelete, currentSort, onSort, onToggle, userCount }) => {
     const columns = {
-        name: { iter: 'name', name: 'Name' },
+        name: {
+            iter: 'name',
+            name: 'Name',
+            component: (user) => (
+                <Link to = {`/users/${user._id}`}>{user.name}</Link>
+            )
+        },
         qualities: {
             name: 'Characteristics',
             component: (user) => (
